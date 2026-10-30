@@ -113,6 +113,9 @@ layout {
     // Set gaps around windows in logical pixels.
     gaps 16
 
+    // Let the wallpaper (placed in the backdrop, see layer-rule below) show through.
+    background-color "transparent"
+
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
     //   or right edge of the screen.
@@ -270,6 +273,9 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 
+// Wallpaper (niri doesn't draw one itself). Needs: sudo dnf install swaybg
+spawn-sh-at-startup "swaybg -m fill -i ~/Pictures/wallpaper.jpg"
+
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
@@ -343,6 +349,19 @@ window-rule {
 window-rule {
     match app-id="^faugus-launcher$"
     open-floating false
+}
+
+// Draw the focus ring only around alacritty, not as a solid fill behind it,
+// otherwise it shines through the transparency when focused.
+window-rule {
+    match app-id="^Alacritty$"
+    draw-border-with-background false
+}
+
+// Show the wallpaper behind workspaces in the overview too.
+layer-rule {
+    match namespace="^wallpaper$"
+    place-within-backdrop true
 }
 
 // Example: enable rounded corners for all windows.
