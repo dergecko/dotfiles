@@ -141,6 +141,9 @@
 	},
 
 	"temperature": {
+		// k10temp (AMD CPU), Tctl; hwmonN numbering isn't stable across boots
+		"hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+		"input-filename": "temp1_input",
 		"critical-threshold": 90,
 		"interval": 5,
 		"format": "{icon} {temperatureC}°",
