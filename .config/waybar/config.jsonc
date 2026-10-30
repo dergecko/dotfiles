@@ -3,6 +3,8 @@
 	"position": "top",
 
 	"modules-left": [
+		"niri/workspaces",
+		"custom/arrow10",
 		"niri/window"
 	],
 
@@ -117,7 +119,7 @@
 		"disable-scroll-wraparound": true,
 		"smooth-scrolling-threshold": 4,
 		"enable-bar-scroll": true,
-		"format": "{name}"
+		"format": "{index}"
 	},
 
 	"pulseaudio": {

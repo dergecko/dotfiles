@@ -126,8 +126,8 @@
 	background: @unfocused;
 }
 
-/* Inactive (on unfocused output) */
-#workspaces button.visible {
+/* Active on an unfocused output (niri uses .active, not sway's .visible) */
+#workspaces button.active {
 	color: @white;
 	background: @inactive;
 }
