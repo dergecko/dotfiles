@@ -276,6 +276,13 @@ spawn-at-startup "waybar"
 // Wallpaper (niri doesn't draw one itself). Needs: sudo dnf install swaybg
 spawn-sh-at-startup "swaybg -m fill -i ~/Pictures/wallpaper.jpg"
 
+// Clipboard history (text and images). Needs: sudo dnf install cliphist
+spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
+spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
+
+// Notifications. Needs: sudo dnf install mako
+spawn-at-startup "mako"
+
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
@@ -390,6 +397,7 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Mod+Ctrl+V hotkey-overlay-title="Clipboard History: cliphist" { spawn-sh "cliphist list | fuzzel --dmenu --prompt 'Clipboard: ' | cliphist decode | wl-copy"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.

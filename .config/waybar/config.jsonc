@@ -21,9 +21,11 @@
 		"temperature",
 		"custom/arrow4",
 		"battery",
+		"power-profiles-daemon",
 		"custom/arrow3",
 		"niri/language",
 		"custom/arrow2",
+		"custom/clipboard",
 		"tray",
 		"clock#date",
 		"custom/arrow1",
@@ -81,7 +83,7 @@
 	"niri/language": {
 		"format": " {}",
 		"min-length": 5,
-		"on-click": "nirimsg 'input * xkb_switch_layout next'",
+		"on-click": "niri msg action switch-layout next",
 		"tooltip": false
 	},
 
@@ -100,8 +102,22 @@
 		"format-wifi": " {essid} ({signalStrength}%)",
 		"format-ethernet": " {ifname}",
 		"format-disconnected": "No connection",
-		"format-alt": " {ipaddr}/{cidr}",
-		"tooltip": false
+		"tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+		"tooltip-format-disconnected": "Disconnected",
+		"on-click": "~/.config/waybar/scripts/wifi-menu.sh",
+		"on-click-right": "nm-connection-editor"
+	},
+
+	// Profiles come from tuned-ppd on Fedora; click cycles through them
+	"power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip-format": "Power profile: {profile}",
+		"format-icons": {
+			"performance": "\uf0e7",
+			"balanced": "\uf24e",
+			"power-saver": "\uf06c",
+			"default": "\uf0e7"
+		}
 	},
 
 	"niri/mode": {
@@ -160,6 +176,13 @@
 	"tray": {
 		"icon-size": 18
 		//"spacing": 10
+	},
+
+	"custom/clipboard": {
+		"format": "\uf328",
+		"tooltip-format": "Clipboard history (right-click to clear)",
+		"on-click": "cliphist list | fuzzel --dmenu --prompt 'Clipboard: ' | cliphist decode | wl-copy",
+		"on-click-right": "cliphist wipe"
 	},
 
 	"custom/arrow1": {

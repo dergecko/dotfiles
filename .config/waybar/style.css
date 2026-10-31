@@ -78,6 +78,8 @@
 #pulseaudio,
 #temperature,
 #tray,
+#power-profiles-daemon,
+#custom-clipboard,
 #backlight,
 #idle_inhibitor,
 #disk,
@@ -190,6 +192,22 @@
 	color: @white;
 }
 
+/* Shares the battery segment */
+#power-profiles-daemon {
+	background: @battery;
+	color: @white;
+	padding-left: 0;
+}
+
+#power-profiles-daemon.performance {
+	color: @bryellow;
+}
+
+#power-profiles-daemon.power-saver {
+	color: @brgreen;
+}
+
+#custom-clipboard,
 #tray {
 	background: @date;
 }
