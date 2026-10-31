@@ -170,13 +170,15 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        // Gruvbox aqua, same as the focused workspace in waybar
+        active-color "#d79921"
 
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#505050"
+        // Gruvbox bg2, same as unfocused workspaces in waybar
+        inactive-color "#504945"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -371,9 +373,8 @@ layer-rule {
     place-within-backdrop true
 }
 
-// Example: enable rounded corners for all windows.
-// (This example rule is commented out with a "/-" in front.)
-/-window-rule {
+// Rounded corners for all windows; the focus ring follows the radius.
+window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
 }
