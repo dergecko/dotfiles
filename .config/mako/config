@@ -1,0 +1,28 @@
+# Gruvbox, matching fuzzel/fuzzel.ini and waybar/style.css
+# Colors are #RRGGBBAA
+
+font=DejaVu Sans Mono 11
+anchor=top-right
+layer=overlay
+width=400
+# vertical,horizontal — same as fuzzel's vertical-pad/horizontal-pad
+padding=12,16
+margin=12
+default-timeout=5000
+
+# bar background (#282828e0)
+background-color=#282828e0
+text-color=#ebdbb2ff
+progress-color=over #fabd2fff
+
+border-size=2
+border-color=#ebdbb2ff
+# matches niri's geometry-corner-radius
+border-radius=12
+
+[urgency=low]
+border-color=#928374ff
+
+[urgency=critical]
+border-color=#fb4934ff
+default-timeout=0
