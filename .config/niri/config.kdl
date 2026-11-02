@@ -74,36 +74,31 @@ input {
 // The built-in laptop monitor is usually called "eDP-1".
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Outputs
-// Remember to uncomment the node by removing "/-"!
-/-output "eDP-1" {
-    // Uncomment this line to disable this output.
-    // off
+//
+// Positions are in logical (scaled) pixels: the laptop panel is 3840x2400 at
+// scale 2, so it takes up 1920x1200. Outputs that aren't connected are ignored.
+// The dock monitors are matched by make/model/serial because their DP-N
+// connector names can change between docks and replugs.
 
-    // Resolution and, optionally, refresh rate of the output.
-    // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
-    // If the refresh rate is omitted, niri will pick the highest refresh rate
-    // for the resolution.
-    // If the mode is omitted altogether or is invalid, niri will pick one automatically.
-    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@120.030"
+// Office layout, left to right: HP | HP | laptop
+output "HP Inc. HP E23 G4 CN42092N50" {
+    position x=0 y=0
+}
 
-    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
+output "HP Inc. HP E23 G4 CN421003RG" {
+    position x=1920 y=0
+}
+
+output "eDP-1" {
     scale 2
+    position x=3840 y=0
+}
 
-    // Transform allows to rotate the output counter-clockwise, valid values are:
-    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
-    transform "normal"
-
-    // Position of the output in the global coordinate space.
-    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
-    // The cursor can only move between directly adjacent outputs.
-    // Output scale and rotation has to be taken into account for positioning:
-    // outputs are sized in logical, or scaled, pixels.
-    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
-    // so to put another output directly adjacent to it on the right, set its x to 1920.
-    // If the position is unset or results in an overlap, the output is instead placed
-    // automatically.
-    position x=1280 y=0
+// The dock outputs are driven by the NVIDIA GPU while niri renders on the Intel
+// one. Waiting for each frame to finish before handing it across is meant to
+// stop flickering on the dock monitors.
+debug {
+    wait-for-frame-completion-before-queueing
 }
 
 // Settings that influence how windows are positioned and sized.
