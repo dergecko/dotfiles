@@ -8,7 +8,9 @@ width=400
 # vertical,horizontal — same as fuzzel's vertical-pad/horizontal-pad
 padding=12,16
 margin=12
-default-timeout=5000
+default-timeout=15000
+# ignore app-requested timeouts (e.g. "never expire") so default-timeout always applies
+ignore-timeout=1
 
 # bar background (#282828e0)
 background-color=#282828e0
