@@ -38,6 +38,7 @@
 @define-color inactive	@purple;
 @define-color sound	@brpurple;
 @define-color network	@purple;
+@define-color bluetooth	@blue;
 @define-color memory	@braqua;
 @define-color cpu	@green;
 @define-color temp	@brgreen;
@@ -75,6 +76,7 @@
 #memory,
 #mode,
 #network,
+#bluetooth,
 #pulseaudio,
 #temperature,
 #tray,
@@ -165,6 +167,17 @@
 #network {
 	background: @network;
 	color: @white;
+}
+
+#bluetooth {
+	background: @bluetooth;
+	color: @white;
+}
+
+/* Powered off or blocked: dim the icon */
+#bluetooth.off,
+#bluetooth.disabled {
+	color: @black;
 }
 
 #memory {
@@ -261,7 +274,7 @@
 #custom-arrow7 {
 	font-size: 11pt;
 	color: @memory;
-	background: @network;
+	background: @bluetooth;
 }
 
 #custom-arrow8 {
@@ -282,8 +295,14 @@
 	background: transparent;
 }
 
+#custom-arrow11 {
+	font-size: 11pt;
+	color: @bluetooth;
+	background: @network;
+}
+
 /* Apply this to whatever IDs/classes your arrows use */
-#custom-arrow1, #custom-arrow2, #custom-arrow3, #custom-arrow4, #custom-arrow5, #custom-arrow6 , #custom-arrow7, #custom-arrow8, #custom-arrow9, #custom-arrow10 {
+#custom-arrow1, #custom-arrow2, #custom-arrow3, #custom-arrow4, #custom-arrow5, #custom-arrow6 , #custom-arrow7, #custom-arrow8, #custom-arrow9, #custom-arrow10, #custom-arrow11 {
     margin-left: 0px;
     margin-right: 0px;
     font-size: 20px;

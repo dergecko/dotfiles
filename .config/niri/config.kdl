@@ -350,6 +350,14 @@ window-rule {
     open-floating true
 }
 
+// bluetui is launched from the waybar bluetooth module as a popup
+window-rule {
+    match app-id="^bluetui$"
+    open-floating true
+    default-column-width { fixed 900; }
+    default-window-height { fixed 550; }
+}
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {

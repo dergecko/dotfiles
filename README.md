@@ -17,6 +17,8 @@
 ### Statusbar and hotkeys
 
 - NetworkManager + nm-connection-editor: wifi menu and network settings
+- bluetui: bluetooth manager, opened from waybar (not packaged in Fedora, installed via cargo)
+- bluez: bluetooth on/off on right-click in waybar (`bluetoothctl`)
 - tuned-ppd: power profile switching (power-profiles-daemon API)
 - wireplumber: volume keys (`wpctl`)
 - pulseaudio-utils: mute on click in waybar (`pactl`)
@@ -36,8 +38,9 @@
 ```sh
 sudo dnf install niri waybar alacritty fish fuzzel swaybg swaylock cliphist wl-clipboard xwayland-satellite \
     NetworkManager nm-connection-editor tuned-ppd wireplumber pulseaudio-utils playerctl brightnessctl \
-    libnotify mako inotify-tools \
+    libnotify mako inotify-tools bluez dbus-devel \
     dejavu-sans-mono-fonts powerline-fonts fontawesome-6-free-fonts
+cargo install bluetui
 ./install.sh
 ```
 
