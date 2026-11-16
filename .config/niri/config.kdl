@@ -94,6 +94,19 @@ output "eDP-1" {
     position x=3840 y=0
 }
 
+// Home layout, left to right: Dell | BenQ
+output "Dell Inc. AW2725Q FCWF174" {
+    mode "3840x2160@239.991"
+    scale 1
+    position x=0 y=0
+}
+
+output "PNP(BNQ) BenQ EX3501R S9J00664019" {
+    mode "3440x1440@99.982"
+    scale 1
+    position x=3840 y=0
+}
+
 // The dock outputs are driven by the NVIDIA GPU while niri renders on the Intel
 // one. Waiting for each frame to finish before handing it across is meant to
 // stop flickering on the dock monitors.
@@ -353,6 +366,16 @@ window-rule {
 window-rule {
     match app-id="^faugus-launcher$"
     open-floating false
+}
+
+window-rule {
+    match app-id="^wow.*$"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="^Wine$" title="World of Warcraft"
+    open-maximized true
 }
 
 // Draw the focus ring only around alacritty, not as a solid fill behind it,
